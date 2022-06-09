@@ -123,7 +123,7 @@ public class ListNodes {
              return res;
          }
 
-    public static void mian(String args[]){
+    public static void main(String[] args){
 
     }
 }

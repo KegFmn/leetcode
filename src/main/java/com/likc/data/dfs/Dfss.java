@@ -1,9 +1,6 @@
 package com.likc.data.dfs;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author likc
@@ -56,17 +53,18 @@ public class Dfss {
          * @return
          */
         List<List<Integer>> subsets(int[] nums) {
+            int len = nums.length;
             List<List<Integer>> res = new ArrayList<>();
-            List<Integer> path = new ArrayList<>();
-            dfs(nums, nums.length, 0, path, res);
+            Deque<Integer> path = new LinkedList<>();
+            dfs(nums, len, 0, path, res);
             return res;
         }
-        private void dfs(int[] nums, int len, int begin, List<Integer> path, List<List<Integer>> res) {
+        private void dfs(int[] nums, int len, int begin, Deque<Integer> path, List<List<Integer>> res) {
             res.add(new ArrayList<>(path));
             for (int i = begin; i < len; i++) {
-                path.add(nums[i]);
+                path.addFirst(nums[i]);
                 dfs(nums, len, i+1, path, res);
-                path.remove(path.size()-1);
+                path.removeFirst();
             }
         }
 
